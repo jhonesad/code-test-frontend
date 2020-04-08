@@ -4,6 +4,7 @@ import { User } from './model/user';
 
 export interface UserFormProps {
     user: User,
+    selectedFile: any,
     onChangeUserField: (field: string, payload: string) => void,
     onSaveUser: (user: User, isNew: boolean) => void,
     onSelectFile: (file: any) => void,
@@ -14,7 +15,7 @@ export interface UserFormProps {
 export const UserForm: React.FC<UserFormProps> = (props) => {
 
     const [submitted, setSubmitted] = React.useState(false);
-    const { user, onUploadAvatar, errors } = props;
+    const { user, onUploadAvatar, errors, selectedFile } = props;
 
     const handleOnChangeFormField = (event: React.FormEvent<HTMLInputElement>) => {
         props.onChangeUserField(event.currentTarget.id, event.currentTarget.value);
@@ -24,7 +25,14 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
         setSubmitted(true);
         if(user.name && user.description) {
             const isNew = user.id === null;
-            props.onSaveUser(user, isNew);
+            const userToSave: User = {
+                id: user.id,
+                name: user.name,
+                description: user.description,
+                createDate: user.createDate,
+                avatar: null
+            } 
+            props.onSaveUser(userToSave, isNew);
         }
     }
 
@@ -80,7 +88,7 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
                     </button>
                     <span> </span>
                     {
-                        user.id && 
+                        user.id && selectedFile &&
                         <button type="button" className="btn btn-secondary" 
                             onClick={() => onUploadAvatar()}>Upload Avatar
                         </button>
@@ -100,5 +108,6 @@ UserForm.propTypes = {
     onSaveUser: PropTypes.func.isRequired,
     onSelectFile: PropTypes.func.isRequired,
     onUploadAvatar: PropTypes.func.isRequired,
-    errors: PropTypes.any.isRequired
+    errors: PropTypes.any.isRequired,
+    selectedFile: PropTypes.any.isRequired
 }

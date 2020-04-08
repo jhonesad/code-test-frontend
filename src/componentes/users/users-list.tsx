@@ -27,7 +27,7 @@ export const UserList: React.FC<UserListProps> = (props) => {
                         <td>{user.name}</td>
                         <td>{user.description}</td>
                         <td style={ { textAlign: "center"} }>
-                            <span onClick={() => onViewEditUser(user)}>
+                            <span className="viewEditIcon" onClick={() => onViewEditUser(user)}>
                                 <i className="fa fa-pencil" aria-hidden="true" title="View/Edit"></i>
                             </span>
                         </td>

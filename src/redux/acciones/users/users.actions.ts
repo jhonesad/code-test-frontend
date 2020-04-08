@@ -62,7 +62,7 @@ export function listAllAsync() {
 }
 
 export function saveUserAsync(user: User, isNew: boolean) {
-    return function (dispacth: any) {
+    return function (dispacth: any) { 
         UserRepository.save(user)
             .then((response: any) => {
                 dispacth(saveUser(response.data, isNew));

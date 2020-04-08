@@ -79,7 +79,7 @@ class Home extends React.Component<Props, any> {
 
   render() {
 
-    const { isOpen } = this.state;
+    const { isOpen, selectedFile } = this.state;
     const { users, user, changeUserField, saveUser, errors } = this.props;
     
     return (
@@ -87,7 +87,7 @@ class Home extends React.Component<Props, any> {
         <h4>User</h4>
         {
           isOpen && 
-            <UserForm user={user} errors={errors}
+            <UserForm user={user} errors={errors} selectedFile={selectedFile}
               onChangeUserField={changeUserField} 
               onSaveUser={saveUser}
               onSelectFile={file => this.prepareFileToUpload(file)}
