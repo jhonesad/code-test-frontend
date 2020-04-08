@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
@@ -16,7 +17,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/server.js",
     "build": "react-scripts build",
     "test": "jest",
     "test:watch": "jest --watch",
