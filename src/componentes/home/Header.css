@@ -1,0 +1,6 @@
+.header {
+  display: inline-block;
+  text-align-last: start;
+  font-size: calc(10px + 2vmin);
+  color: green;
+}
