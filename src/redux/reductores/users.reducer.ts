@@ -55,7 +55,7 @@ export default function(state = initialState, action: UsersActionType) : UsersSt
                 users.push(action.payload);
             } else {
                 users.forEach(user => {
-                    if(user.name === action.payload.name) {
+                    if(user.id === action.payload.id) {
                         user.name = action.payload.name;
                         user.description = action.payload.description; 
                     }
